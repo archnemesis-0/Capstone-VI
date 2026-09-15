@@ -13,7 +13,7 @@ cleaned AS (
         TRIM(WAREHOUSE_ID) AS WAREHOUSE_ID,
         QUANTITY,
         REORDER_LEVEL,
-        LAST_UPDATED
+        TO_DATE(LAST_UPDATED) as LAST_UPDATED
     FROM source
 
 )
