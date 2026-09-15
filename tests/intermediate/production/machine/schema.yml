@@ -1,0 +1,25 @@
+version: 2
+
+models:
+
+  - name: int_machine_utilization
+    description: "Machine-level production and capacity utilization metrics."
+
+    columns:
+
+      - name: MACHINE_ID
+        tests:
+          - not_null
+          - unique
+
+      - name: CAPACITY_PER_DAY
+        tests:
+          - not_null
+
+      - name: TOTAL_PRODUCTION_QUANTITY
+        tests:
+          - not_null
+
+      - name: CAPACITY_UTILIZATION_PCT
+        tests:
+          - not_null

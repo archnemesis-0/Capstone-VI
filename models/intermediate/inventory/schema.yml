@@ -1,0 +1,44 @@
+models:
+
+  - name: int_inventory_alerts
+    description: >
+      Identifies low-stock and overstock inventory and calculates
+      inventory alert metrics.
+
+    columns:
+
+      - name: INVENTORY_ID
+        description: Unique inventory record identifier.
+        tests:
+          - not_null
+          - unique
+
+      - name: PRODUCT_ID
+        tests:
+          - not_null
+
+      - name: WAREHOUSE_ID
+        tests:
+          - not_null
+
+      - name: QUANTITY
+        tests:
+          - not_null
+
+      - name: REORDER_LEVEL
+        tests:
+          - not_null
+
+      - name: INVENTORY_STATUS
+        description: >
+          Inventory classification as LOW_STOCK, OVERSTOCK, or NORMAL.
+        tests:
+          - not_null
+
+      - name: IS_LOW_STOCK
+        tests:
+          - not_null
+
+      - name: IS_OVERSTOCK
+        tests:
+          - not_null
