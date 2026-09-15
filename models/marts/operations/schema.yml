@@ -1,0 +1,108 @@
+version: 2
+
+models:
+
+  - name: fct_inventory
+    description: >
+      Inventory fact table containing product inventory quantities,
+      reorder levels, warehouse information, and stock alert classifications.
+
+    columns:
+
+      - name: INVENTORY_ID
+        description: Unique identifier for the inventory record.
+        tests:
+          - not_null
+          - unique
+
+      - name: PRODUCT_ID
+        description: Identifier of the product.
+        tests:
+          - not_null
+
+      - name: WAREHOUSE_ID
+        description: Identifier of the warehouse.
+        tests:
+          - not_null
+
+      - name: QUANTITY
+        description: Current quantity of the product in inventory.
+        tests:
+          - not_null
+
+      - name: REORDER_LEVEL
+        description: Quantity below which the product is considered low stock.
+        tests:
+          - not_null
+
+      - name: LAST_UPDATED
+        description: Timestamp when the inventory record was last updated.
+
+      - name: STOCK_BUFFER
+        description: Difference between current quantity and reorder level.
+
+      - name: IS_LOW_STOCK
+        description: Flag indicating whether inventory is below the reorder level.
+        tests:
+          - not_null
+
+      - name: IS_OVERSTOCK
+        description: Flag indicating whether inventory exceeds twice the reorder level.
+        tests:
+          - not_null
+
+      - name: INVENTORY_STATUS
+        description: >
+          Inventory classification as LOW_STOCK, OVERSTOCK, or NORMAL.
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - LOW_STOCK
+                  - OVERSTOCK
+                  - NORMAL
+
+  - name: fct_shipments
+    description: >
+      Shipment fact table containing shipment quantities,
+      warehouse information, shipment and delivery dates,
+      shipment status, and delivery duration.
+
+    columns:
+      - name: SHIPMENT_ID
+        description: Unique identifier of the shipment.
+        tests:
+          - not_null
+          - unique
+
+      - name: PRODUCT_ID
+        description: Identifier of the shipped product.
+        tests:
+          - not_null
+
+      - name: WAREHOUSE_ID
+        description: Identifier of the warehouse handling the shipment.
+        tests:
+          - not_null
+
+      - name: QUANTITY
+        description: Quantity of products shipped.
+        tests:
+          - not_null
+
+      - name: SHIPMENT_DATE
+        description: Date and time when the shipment was dispatched.
+        tests:
+          - not_null
+
+      - name: DELIVERY_DATE
+        description: Date and time when the shipment was delivered.
+
+      - name: STATUS
+        description: Current shipment status.
+        tests:
+          - not_null
+
+      - name: DELIVERY_DAYS
+        description: Number of days between shipment and delivery.
