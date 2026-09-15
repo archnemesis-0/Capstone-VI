@@ -14,7 +14,7 @@ cleaned AS (
         SUPPLIER_ID,
         PRICE,
         WEIGHT_KG,
-        CREATED_AT
+        TO_DATE(CREATED_AT) AS CREATED_AT
     FROM source
 
 )
