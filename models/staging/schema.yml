@@ -1,0 +1,21 @@
+version: 2
+
+models:
+
+  - name: stg_products
+    description: "Cleaned and standardized product data"
+
+  - name: stg_inventory
+    description: "Cleaned and standardized inventory data"
+
+  - name: stg_production_orders
+    description: "Cleaned and standardized production order data"
+
+  - name: stg_machines
+    description: "Cleaned and standardized machine data"
+
+  - name: stg_suppliers
+    description: "Cleaned and standardized supplier data"
+
+  - name: stg_shipments
+    description: "Cleaned and standardized shipment data"
