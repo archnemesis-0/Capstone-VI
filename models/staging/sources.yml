@@ -1,0 +1,13 @@
+sources:
+  - name: src
+    database: MANUFACTURING
+    schema: RAW
+ 
+    tables:
+      - name: RAW_PRODUCTS
+      - name: RAW_INVENTORY
+      - name: RAW_PRODUCTION_ORDERS
+      - name: RAW_MACHINES
+      - name: RAW_SUPPLIERS
+      - name: RAW_SHIPMENTS
+     
