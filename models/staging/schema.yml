@@ -4,18 +4,115 @@ models:
 
   - name: stg_products
     description: "Cleaned and standardized product data"
+    columns:
+      - name: PRODUCT_ID
+        tests:
+          - not_null
+          - unique
+
+      - name: PRODUCT_NAME
+        tests:
+          - not_null
+
+      - name: SUPPLIER_ID
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_suppliers')
+                field: SUPPLIER_ID
+
 
   - name: stg_inventory
     description: "Cleaned and standardized inventory data"
+    columns:
+      - name: INVENTORY_ID
+        tests:
+          - not_null
+          - unique
+
+      - name: PRODUCT_ID
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_products')
+                field: PRODUCT_ID
+
+      - name: QUANTITY
+        tests:
+          - not_null
+
 
   - name: stg_production_orders
     description: "Cleaned and standardized production order data"
+    columns:
+      - name: PRODUCTION_ORDER_ID
+        tests:
+          - not_null
+          - unique
+
+      - name: PRODUCT_ID
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_products')
+                field: PRODUCT_ID
+
+      - name: MACHINE_ID
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_machines')
+                field: MACHINE_ID
+
+      - name: QUANTITY
+        tests:
+          - not_null
+
 
   - name: stg_machines
     description: "Cleaned and standardized machine data"
+    columns:
+      - name: MACHINE_ID
+        tests:
+          - not_null
+          - unique
+
+      - name: MACHINE_TYPE
+        tests:
+          - not_null
+
 
   - name: stg_suppliers
     description: "Cleaned and standardized supplier data"
+    columns:
+      - name: SUPPLIER_ID
+        tests:
+          - not_null
+          - unique
+
+      - name: SUPPLIER_NAME
+        tests:
+          - not_null
+
 
   - name: stg_shipments
     description: "Cleaned and standardized shipment data"
+    columns:
+      - name: SHIPMENT_ID
+        tests:
+          - not_null
+          - unique
+
+      - name: PRODUCT_ID
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_products')
+                field: PRODUCT_ID
+
+      - name: QUANTITY
+        tests:
+          - not_null
