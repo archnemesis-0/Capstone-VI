@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: >
+      Product dimension containing product attributes,
+      category, supplier information, price, and weight.
+
+    columns:
+      - name: PRODUCT_ID
+        description: Unique identifier of the product.
+        tests:
+          - not_null
+          - unique
+
+      - name: PRODUCT_NAME
+        description: Name of the product.
+        tests:
+          - not_null
+
+      - name: CATEGORY
+        description: Product category.
+        tests:
+          - not_null
+
+      - name: SUPPLIER_ID
+        description: Supplier associated with the product.
+        tests:
+          - not_null
+
+      - name: PRICE
+        description: Product selling price.
+        tests:
+          - not_null
+
+      - name: WEIGHT_KG
+        description: Product weight in kilograms.
+
+      - name: CREATED_AT
+        description: Timestamp when the product was created.
+
+  - name: dim_suppliers
+    description: >
+      Supplier dimension containing supplier identification,
+      contact information, and update timestamps.
+
+    columns:
+      - name: SUPPLIER_ID
+        description: Unique identifier of the supplier.
+        tests:
+          - not_null
+          - unique
+
+      - name: SUPPLIER_NAME
+        description: Name of the supplier.
+        tests:
+          - not_null
+
+      - name: CONTACT_EMAIL
+        description: Supplier contact email.
+
+      - name: CONTACT_PHONE
+        description: Supplier contact phone number.
+
+      - name: UPDATED_AT
+        description: Timestamp when supplier information was last updated.

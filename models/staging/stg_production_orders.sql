@@ -12,8 +12,8 @@ cleaned AS (
         TRIM(PRODUCT_ID) AS PRODUCT_ID,
         TRIM(MACHINE_ID) AS MACHINE_ID,
         QUANTITY,
-        START_DATE,
-        END_DATE,
+        TO_DATE(START_DATE) AS START_DATE,
+        TO_DATE(END_DATE) AS END_DATE,
         TRIM(STATUS) AS STATUS
     FROM source
 

@@ -1,0 +1,31 @@
+version: 2
+
+models:
+
+  - name: int_production_metrics
+    description: "Production-level metrics calculated from production orders."
+
+    columns:
+
+      - name: PRODUCTION_ORDER_ID
+        tests:
+          - not_null
+          - unique
+
+      - name: MACHINE_ID
+        tests:
+          - not_null
+
+      - name: PRODUCT_ID
+        tests:
+          - not_null
+
+      - name: QUANTITY
+        tests:
+          - not_null
+
+      - name: PRODUCTION_DURATION_HOURS
+        description: "Duration of the production order in hours."
+
+      - name: PRODUCTION_RATE_PER_HOUR
+        description: "Production quantity divided by production duration."

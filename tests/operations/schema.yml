@@ -1,0 +1,49 @@
+version: 2
+
+models:
+
+  - name: dim_machines
+    description: "Dimension containing manufacturing machine attributes."
+
+    columns:
+
+      - name: MACHINE_ID
+        description: "Unique identifier for a machine."
+        tests:
+          - not_null
+          - unique
+
+      - name: MACHINE_TYPE
+        tests:
+          - not_null
+
+      - name: CAPACITY_PER_DAY
+        tests:
+          - not_null
+
+  - name: fct_production_orders
+    description: "Production order fact containing production quantities and calculated production metrics."
+
+    columns:
+
+      - name: PRODUCTION_ORDER_ID
+        description: "Unique production order identifier."
+        tests:
+          - not_null
+          - unique
+
+      - name: PRODUCT_ID
+        tests:
+          - not_null
+
+      - name: MACHINE_ID
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_machines')
+                field: MACHINE_ID
+
+      - name: QUANTITY
+        tests:
+          - not_null

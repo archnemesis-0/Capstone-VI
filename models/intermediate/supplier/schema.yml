@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: int_supplier_performance
+    description: >
+      Calculates supplier shipment performance metrics based on
+      products supplied and their associated shipments.
+
+    columns:
+      - name: SUPPLIER_ID
+        description: Unique identifier of the supplier.
+        tests:
+          - not_null
+          - unique
+
+      - name: SUPPLIER_NAME
+        description: Name of the supplier.
+        tests:
+          - not_null
+
+      - name: TOTAL_SHIPMENTS
+        description: Total number of shipments associated with the supplier.
+        tests:
+          - not_null
+
+      - name: TOTAL_SHIPPED_QUANTITY
+        description: Total quantity shipped for products supplied by the supplier.
+        tests:
+          - not_null
+
+      - name: DELIVERED_SHIPMENTS
+        description: Number of shipments that have been delivered.
+        tests:
+          - not_null
+
+      - name: IN_TRANSIT_SHIPMENTS
+        description: Number of shipments currently in transit.
+        tests:
+          - not_null
+
+      - name: AVERAGE_DELIVERY_DAYS
+        description: Average number of days between shipment and delivery.
+
+      - name: DELIVERY_COMPLETION_RATE_PCT
+        description: Percentage of supplier shipments that have been delivered.
+        tests:
+          - not_null
